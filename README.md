@@ -80,13 +80,14 @@ tensorboard --logdir=runs
 To extend the usage, you can write your own ```*_step``` function in the same input-output format as that in ```steps.py```. Essentially, the format is below. Note that, you'd better let your function end with ```_step``` to make things easier.
 ```python
 # For now, only one model is accepted, but each step can be very versatile
+# net must inherit nn.Module
 def customised_step(net, batch, batch_idx, **kw):
 
 	# Each dataloader may be defined differently, so you can handle it case by case
 	_your_data_at_each_batch  = batch
 
 	# Process your training, testing, etc.
-	_your_loss_perhaps, _whatever_you_want_to_monitor = _your_process(_your_data_at_each_batch)
+	_your_loss_perhaps, _whatever_you_want_to_monitor = _your_process(net, _your_data_at_each_batch, **kw)
 
 	return {
 		'first output':_your_loss_perhaps,
