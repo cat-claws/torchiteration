@@ -57,8 +57,7 @@ for epoch in range(10):
 	if epoch > 0:
 		train(model, train_loader = train_loader, epoch = epoch, writer = writer, **config)
 
-	else:
-		validate(model, val_loader = val_loader, epoch = epoch, writer = writer, **config)
+	validate(model, val_loader = val_loader, epoch = epoch, writer = writer, **config)
 
 	torch.save(model.state_dict(), writer.log_dir.split('/')[-1] + f"_{epoch:03}.pt")
 
