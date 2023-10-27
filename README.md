@@ -1,14 +1,28 @@
-# Torch iteration
-A lightweight PyTorch training toolkit.
+# Torch Iteration - A Lightweight PyTorch Training Toolkit
+
+[![GitHub license](https://img.shields.io/github/license/cat-claws/torchiteration.svg)](https://github.com/cat-claws/torchiteration/blob/main/LICENSE)
+[![PyPI version](https://img.shields.io/pypi/v/torchiteration.svg)](https://pypi.org/project/torchiteration/)
+
+Torch Iteration is a versatile PyTorch training toolkit designed to simplify your deep learning projects. With real-time statistics and flexible configuration, it empowers you to train models efficiently and effectively.
+
 
 ## Installation
-To install this small tool from the source code
+To install Torch Iteration from PyPI, simply run the following command:
+
+```bash
+pip install torchiteration
+```
+
+To install Torch Iteration from GitHub, run:
 ```
 pip install git+https://github.com/cat-claws/torchiteration/
 ```
 
 ## How to use
-Example for [MNIST](https://github.com/pytorch/examples/blob/main/mnist/main.py)
+
+### Example: Training a Model on MNIST
+Get started with Torch Iteration by training a model on the [MNIST](https://github.com/pytorch/examples/blob/main/mnist/main.py) dataset. Below is an example script:
+
 ```python
 import torch
 from torch.utils.tensorboard import SummaryWriter
@@ -71,12 +85,15 @@ writer.flush()
 writer.close()
 ```
 
-To see the result, run this command in Terminal:
+### Visualizing Training Progress
+To visualize the training progress, run the following command in your terminal:
+
 ```properties
 tensorboard --logdir=runs
 ```
+### Extending Torch Iteration
+You can extend Torch Iteration by creating your own custom ```*_step``` function in the same input-output format as those in ```steps.py```. Make sure your function ends with ```_step``` for easier integration. Here's a template:
 
-To extend the usage, you can write your own ```*_step``` function in the same input-output format as that in ```steps.py```. Essentially, the format is below. Note that, you'd better let your function end with ```_step``` to make things easier.
 ```python
 # For now, only one model is accepted, but each step can be very versatile
 # net must inherit nn.Module
@@ -94,3 +111,5 @@ def customised_step(net, batch, batch_idx, **kw):
 		'third output, etc.': _just_continue
 	}
 ```
+With Torch Iteration, streamline your PyTorch training workflows, and easily customize your training steps for your specific project needs.
+
