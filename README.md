@@ -13,10 +13,17 @@ To install Torch Iteration from PyPI, simply run the following command:
 pip install torchiteration
 ```
 
-To install Torch Iteration from GitHub, run:
+To install Torch Iteration from the source code, use the following command:
 ```
 pip install git+https://github.com/cat-claws/torchiteration/
 ```
+
+## Table of Contents
+- [Installation](#installation)
+- [How to Use](#how-to-use)
+  - [Example: Training a Model on MNIST](#example-training-a-model-on-mnist)
+  - [Visualizing Training Progress](#visualizing-training-progress)
+  - [Extending Torch Iteration](#extending-torch-iteration)
 
 ## How to use
 
