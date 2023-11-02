@@ -9,6 +9,7 @@ def train(net, training_step, train_loader, optimizer, scheduler, **kw):
 			output = training_step(net, batch, batch_idx, **kw)
 		loss = output['loss'] / kw['batch_size']
 		loss.backward()
+		torch.nn.utils.clip_grad_norm_(net.parameters(), 1)
 		optimizer.step()
 		outputs.append({k:v.detach().cpu() for k, v in output.items()})
 		for k, v in output.items():
