@@ -23,16 +23,13 @@ def train(net, training_step, train_loader, optimizer, scheduler, **kw):
 	scheduler.step()
 
 def train_plain(net, training_step, train_loader, optimizer, scheduler, **kw):
-	# net.train()
+	net.train()
 	outputs = []
 	for batch_idx, batch in enumerate(train_loader):
-		# optimizer.zero_grad()
+		optimizer.zero_grad()
 		with torch.autocast(kw['device']):
 			output = training_step(net, batch, batch_idx, **kw)
-		# loss = output['loss'] / kw['batch_size']
-		# loss.backward()
-		# torch.nn.utils.clip_grad_norm_(net.parameters(), 1)
-		# optimizer.step()
+		optimizer.step()
 		outputs.append({k:v.detach().cpu() for k, v in output.items()})
 		for k, v in output.items():
 			kw['writer'].add_scalar("Step-" + k + "-train", v / kw['batch_size'], kw['epoch'] * len(train_loader) + batch_idx)
