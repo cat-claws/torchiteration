@@ -1,0 +1,47 @@
+# Byte-compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+env/
+*.egg-info/
+
+# Distribution / Packaging
+build/
+dist/
+*.egg
+*.wheel
+*.tar.gz
+*.whl
+
+# Jupyter Notebook Checkpoints
+.ipynb_checkpoints/
+
+# Logs and databases
+*.log
+*.sqlite
+
+# IDE / Editor settings
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# System Files
+.DS_Store
+Thumbs.db
+
+# Pytest / Coverage
+htmlcov/
+.coverage
+*.cover
+.pytest_cache/
+
+# Pipenv / Poetry
+Pipfile
+Pipfile.lock
+poetry.lock
+
+
