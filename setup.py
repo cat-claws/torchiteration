@@ -7,7 +7,6 @@ VERSION = '0.0.4'
 requirements = [
     'numpy',
     'pandas',
-	'torch'
 ]
 
 setup(
