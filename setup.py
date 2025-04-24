@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 readme = open('README.md').read()
 
-VERSION = '0.0.4'
+VERSION = '0.0.5'
 
 requirements = [
     'numpy',
