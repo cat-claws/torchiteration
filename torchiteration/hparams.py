@@ -1,11 +1,13 @@
 import inspect
 from torch.utils.tensorboard.summary import hparams
+import numpy as np
+import torch
 
 def get_kwargs_for(cls, config, prefix):
     sig = inspect.signature(cls)
     return {
-        k[len(prefix)+1:]: v
-        for k, v in config.items()
+        k[len(prefix)+1:]: config.pop(k)
+        for k in list(config)
         if k.startswith(prefix + "_") and k[len(prefix)+1:] in sig.parameters
     }
 
@@ -14,7 +16,7 @@ def build_optimizer(config, params):
     return cls(params, **get_kwargs_for(cls, config, "optimizer"))
 
 def build_scheduler(config, optimizer):
-    cls = getattr(schetorch.optim.lr_schedulerd, config['scheduler'])
+    cls = getattr(torch.optim.lr_scheduler, config['scheduler'])
     return cls(optimizer, **get_kwargs_for(cls, config, "scheduler"))
 
 def format_for_hparams(config):
